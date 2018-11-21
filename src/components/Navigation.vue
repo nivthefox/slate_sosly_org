@@ -1,3 +1,4 @@
+<!--
 // Copyright (c) 2018 Kevin Kragenbrink, II
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17,14 +18,36 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+//-->
 
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
+<template>
+    <nav>
+        <router-link to="/">Sheets</router-link>
+    </nav>
+</template>
 
-Vue.config.productionTip = false;
+<style lang="scss">
+nav {
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  display: block;
+  left: 0;
+  padding: 0.2in;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+  a {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 0 0.2in;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+</style>

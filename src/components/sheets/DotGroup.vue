@@ -1,3 +1,4 @@
+<!--
 // Copyright (c) 2018 Kevin Kragenbrink, II
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -17,14 +18,33 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
+//-->
 
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
+<template>
+    <span class="dot-group">
+        <i class="fas fa-ban" v-if="min === '0'"></i>
+        <span class="dot" v-for="dot of dots">
+            <input type="radio" v-bind:name="name" v-bind:id="name" />
+            <span></span>
+        </span>
+    </span>
+</template>
 
-Vue.config.productionTip = false;
+<script>
+export default {
+  name: 'DotGroup',
+  props: ['max', 'min', 'name', 'value'],
+  computed: {
+    dots: function() {
+      const arr = [];
+      for (let i = 0; i < this.max; i++) {
+        arr.push(i < this.value);
+      }
+      return arr;
+    }
+  }
+}
+</script>
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+<style lang="scss">
+</style>
