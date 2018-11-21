@@ -21,34 +21,36 @@
 //-->
 
 <template>
-    <div id="app">
-        <reset />
-        <navigation />
-        <router-view/>
-    </div>
+  <div id="app">
+    <reset/>
+    <navigation/>
+    <router-view/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  </div>
 </template>
 
 <script>
-import Reset from "@/components/Reset.vue"; // imported first to cascade
-import Navigation from "@/components/Navigation.vue";
+  import Reset from "@/components/Reset.vue"; // imported first to cascade
+  import Navigation from "@/components/Navigation.vue";
 
-export default {
-  name: "app",
-  components: {
-    Navigation,
-    Reset
-  }
-};
+  export default {
+    name: "app",
+    components: {
+      Navigation,
+      Reset
+    }
+  };
 </script>
 
 <style lang="scss">
-#app {
-  background: rgb(82, 86, 89);
-  left: 0;
-  min-height: 100%;
-  padding: 0.5in 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
+  #app {
+    background: rgb(82, 86, 89);
+    left: 0;
+    min-height: 100%;
+    padding: 0.5in 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 </style>

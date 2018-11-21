@@ -71,9 +71,9 @@
 
 <script>
 export default {
-  name: 'CofD2e',
-  props: ['data']
-}
+  name: "CofD2e",
+  props: ["data"]
+};
 </script>
 
 <style lang="scss">
