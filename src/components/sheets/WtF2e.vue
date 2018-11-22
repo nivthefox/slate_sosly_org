@@ -312,7 +312,7 @@
         width: 50%;
       }
       .willpower, .essence, .primal-urge, .harmony, .renown, .aspirations {
-        padding: 0 0.1in;
+        padding: 0.1in 0.1in 0;
         h1 {
           margin-bottom: 0.1in;
         }
