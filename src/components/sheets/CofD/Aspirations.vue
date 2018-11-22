@@ -1,3 +1,4 @@
+<!--
 // Copyright (c) 2018 Kevin Kragenbrink, II
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -16,15 +17,20 @@
 // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.w
+// SOFTWARE.
+//-->
+<template>
+  <fieldset class="aspirations">
+    <h1>Aspirations</h1>
+    <div v-for="(aspiration, i) of data.sheet.aspirations" v-bind:key="aspiration">
+      <input type="text" v-model="data.sheet.aspirations[i]" />
+    </div>
+  </fieldset>
+</template>
 
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+<script>
+  export default {
+    name: 'Aspirations',
+    props: ['data']
+  }
+</script>

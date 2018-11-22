@@ -38,7 +38,7 @@
         sheet: {
           name: "Lachlan Morrison",
           type: "wtf2e",
-          userId: "Vale#8130",
+          userId: "Someone#0000",
           sheet: {
             chronicle: "Beneath the Reek",
             blood: "The Fox",
@@ -210,7 +210,8 @@
             },
             rites: ["Hunting Ground"],
             experiences: 1,
-            beats: 1
+            beats: 1,
+            aspirations: ["To be king, again", "Find a lcous", "Wear my crown", "", ""]
           }
         }
       };

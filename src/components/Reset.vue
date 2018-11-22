@@ -28,7 +28,7 @@ Last Updated: 2010-09-17
 Author: Richard Clark - http://richclarkdesign.com
 Twitter: @rich_clark
 */
-
+html { scroll-behavior: smooth; }
 html,
 body,
 div,

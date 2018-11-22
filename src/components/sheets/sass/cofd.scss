@@ -26,10 +26,10 @@ $pencil: #333;
   0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-sizing: border-box;
   height: 11in;
-  margin: 0.25in auto;
+  margin-bottom: 0.5in;
   padding: 0.15in 0.25in;
   position: relative;
-  width: 8.5in;
+  width: 100%;
 
   &:before {
     content: "";
