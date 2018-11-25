@@ -211,7 +211,14 @@
             rites: ["Hunting Ground"],
             experiences: 1,
             beats: 1,
-            aspirations: ["To be king, again", "Find a lcous", "Wear my crown", "", ""]
+            aspirations: ["To be king, again", "Find a lcous", "Wear my crown", "", ""],
+            notes: "These are my notes.",
+            touchstones: {
+              flesh: "",
+              spirit: ""
+            },
+            kuruth_triggers: "",
+            conditions: ""
           }
         }
       };

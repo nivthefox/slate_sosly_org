@@ -25,6 +25,7 @@
     <TOC>
       <a href="#page-1">1</a>
       <a href="#page-2">2</a>
+      <a href="#page-3">3</a>
     </TOC>
     <article id="page-1" class="page">
       <header>
@@ -158,8 +159,35 @@
     </article>
     <article id="page-2" class="page">
       <header>
-        <img src="@/assets/CofD/WtF2e.png"/>
+        <img src="@/assets/CofD/WtF2e.png" />
       </header>
+      <section class="other-traits">
+        <header>Other Traits</header>
+        <fieldset>
+          <h1>Flesh Touchstone</h1>
+          <textarea v-model="data.sheet.touchstones.flesh"></textarea>
+          <h1>Spirit Touchstone</h1>
+          <textarea v-model="data.sheet.touchstones.spirit"></textarea>
+          <h1>Kuruth Triggers</h1>
+          <textarea v-model="data.sheet.kuruth_triggers"></textarea>
+          <h1>Conditions</h1>
+          <textarea v-model="data.sheet.conditions"></textarea>
+        </fieldset>
+      </section>
+      <section class="gifts-and-rites">
+        <header>
+          Gifts and Rites
+        </header>
+      </section>
+    </article>
+    <article id="page-3" class="page">
+      <header>
+        <img src="@/assets/CofD/WtF2e.png" />
+      </header>
+      <fieldset class="notes">
+        <header>Notes</header>
+        <textarea v-model="data.sheet.notes"></textarea>
+      </fieldset>
     </article>
   </form>
 </template>
@@ -207,6 +235,7 @@
       background-image: url('../../assets/CofD/forsaken-background.jpg');
       background-size: 100% 100%;
 
+      // General
       &:before {
         background-color: $brown;
         mask-image: url("../../assets/CofD/forsaken-skull.png");
@@ -242,6 +271,7 @@
         }
       }
 
+      // Page 1
       .personal-info {
         input {
           // middle
@@ -353,6 +383,63 @@
           }
         }
         .experiences { text-align: center; }
+      }
+
+      // Page 2
+      .other-traits {
+        display: inline-block;
+        float: left;
+        margin: 0.2in 0;
+        padding-right: 0;
+        vertical-align: top;
+        width: 33%;
+
+        fieldset {
+          border-right-color: $brown;
+          border-right-style: solid;
+          border-right-width: 2px;
+          padding-right: 0.1in;
+          margin-top: 0.2in;
+
+          h1 {
+            padding-bottom: 0.1in;
+          }
+
+          textarea {
+            display: block;
+            height: 0.5in;
+            margin: 0 auto 0.1in;
+            overflow-y: auto;
+            padding: 0.1in;
+            resize: none;
+            text-align: left;
+            width: 90%;
+          }
+        }
+      }
+      .gifts-and-rites {
+        display: inline-block;
+        float: left;
+        margin: 0.2in 0;
+        padding-left: 0;
+        vertical-align: top;
+        width: 66%;
+      }
+
+      // Page 3
+      .notes {
+        margin-top: 0.2in;
+        textarea {
+          border: 1px solid #EEE;
+          display: block;
+          height: 8in;
+          margin: 0.2in auto 0;
+          overflow-y: auto;
+          padding: 0.1in;
+          resize: none;
+          text-align: left;
+          width: 7.5in;
+        }
       }
     }
   }
