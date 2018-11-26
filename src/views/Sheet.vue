@@ -28,205 +28,208 @@
 </template>
 
 <script>
-  import CofD2e from "@/components/sheets/CofD2e.vue";
-  import WtF2e from "@/components/sheets/WtF2e.vue";
+import CofD2e from "@/components/sheets/CofD2e.vue";
+import WtF2e from "@/components/sheets/WtF2e.vue";
 
-  export default {
-    name: "sheet",
-    data: function () {
-      window.data = {
+export default {
+  name: "sheet",
+  data: function() {
+    window.data = {
+      sheet: {
+        name: "Lachlan Morrison",
+        type: "wtf2e",
+        userId: "Someone#0000",
         sheet: {
-          name: "Lachlan Morrison",
-          type: "wtf2e",
-          userId: "Someone#0000",
-          sheet: {
-            chronicle: "Beneath the Reek",
-            blood: "The Fox",
-            bone: "Wallflower",
-            concept: "Wealthy Vagabond",
-            auspice: "Irraka",
-            tribe: "Hunters in Darkness",
-            lodge: "",
-            intelligence: 3,
-            wits: 3,
-            resolve: 2,
-            strength: 2,
-            dexterity: 3,
-            stamina: 2,
-            presence: 1,
-            manipulation: 2,
-            composure: 3,
-            academics: {
-              dots: 2
-            },
-            computer: {
-              dots: 0
-            },
-            crafts: {
-              dots: 0
-            },
-            investigation: {
-              dots: 0
-            },
-            medicine: {
+          chronicle: "Beneath the Reek",
+          blood: "The Fox",
+          bone: "Wallflower",
+          concept: "Wealthy Vagabond",
+          auspice: "Irraka",
+          tribe: "Hunters in Darkness",
+          lodge: "",
+          intelligence: 3,
+          wits: 3,
+          resolve: 2,
+          strength: 2,
+          dexterity: 3,
+          stamina: 2,
+          presence: 1,
+          manipulation: 2,
+          composure: 3,
+          academics: {
+            dots: 2
+          },
+          computer: {
+            dots: 0
+          },
+          crafts: {
+            dots: 0
+          },
+          investigation: {
+            dots: 0
+          },
+          medicine: {
+            dots: 1
+          },
+          occult: {
+            dots: 0
+          },
+          politics: {
+            dots: 1,
+            specialties: "Investments"
+          },
+          science: {
+            dots: 0
+          },
+          athletics: {
+            dots: 2,
+            specialties: "Parkour"
+          },
+          brawl: {
+            dots: 1
+          },
+          drive: {
+            dots: 0
+          },
+          firearms: {
+            dots: 1
+          },
+          larceny: {
+            dots: 0
+          },
+          stealth: {
+            dots: 0
+          },
+          survival: {
+            dots: 3,
+            specialties: "Hunting"
+          },
+          weaponry: {
+            dots: 0
+          },
+          animal_ken: {
+            dots: 3
+          },
+          empathy: {
+            dots: 1
+          },
+          expression: {
+            dots: 0
+          },
+          intimidation: {
+            dots: 0
+          },
+          persuasion: {
+            dots: 1
+          },
+          socialize: {
+            dots: 3
+          },
+          streetwise: {
+            dots: 3
+          },
+          subterfuge: {
+            dots: 1
+          },
+          merits: [
+            {
+              name: "Multilingual (French, Scots-Gaelic)",
               dots: 1
             },
-            occult: {
-              dots: 0
-            },
-            politics: {
-              dots: 1,
-              specialties: 'Investments'
-            },
-            science: {
-              dots: 0
-            },
-            athletics: {
-              dots: 2,
-              specialties: 'Parkour'
-            },
-            brawl: {
+            {
+              name: "Parkour",
               dots: 1
             },
-            drive: {
-              dots: 0
+            {
+              name: "Resources",
+              dots: 4
             },
-            firearms: {
+            {
+              name: "Trained Observer",
               dots: 1
             },
-            larceny: {
-              dots: 0
-            },
-            stealth: {
-              dots: 0
-            },
-            survival: {
-              dots: 3,
-              specialties: 'Hunting'
-            },
-            weaponry: {
-              dots: 0
-            },
-            animal_ken: {
+            {
+              name: "True Friend (Bran)",
               dots: 3
             },
-            empathy: {
-              dots: 1
-            },
-            expression: {
-              dots: 0
-            },
-            intimidation: {
-              dots: 0
-            },
-            persuasion: {
-              dots: 1
-            },
-            socialize: {
-              dots: 3
-            },
-            streetwise: {
-              dots: 3
-            },
-            subterfuge: {
-              dots: 1
-            },
-            merits: [
+            { dots: 0 },
+            { dots: 0 },
+            { dots: 0 },
+            { dots: 0 },
+            { dots: 0 },
+            { dots: 0 },
+            { dots: 0 }
+          ],
+          primal_urge: 1,
+          essence: {
+            current: 10,
+            max: 10
+          },
+          willpower: {
+            current: 5,
+            max: 5
+          },
+          harmony: 7,
+          size: 5,
+          health: {
+            max: 7,
+            aggravated: 2,
+            lethal: 1,
+            bashing: 2
+          },
+          renown: {
+            cunning: 1,
+            glory: 0,
+            honor: 0,
+            purity: 1,
+            wisdom: 1
+          },
+          gifts: {
+            moon: [
               {
-                name: "Multilingual (French, Scots-Gaelic)",
+                list: "New Moon",
                 dots: 1
               },
               {
-                name: "Parkour",
-                dots: 1
-              },
-              {
-                name: "Resources",
-                dots: 4
-              },
-              {
-                name: "Trained Observer",
-                dots: 1
-              },
-              {
-                name: "True Friend (Bran)",
-                dots: 3
-              },
-              { dots: 0 },
-              { dots: 0 },
-              { dots: 0 },
-              { dots: 0 },
-              { dots: 0 },
-              { dots: 0 },
-              { dots: 0 }
+                list: "",
+                dots: 0
+              }
             ],
-            primal_urge: 1,
-            essence: {
-              current: 10,
-              max: 10
-            },
-            willpower: {
-              current: 5,
-              max: 5
-            },
-            harmony: 7,
-            size: 5,
-            health: {
-              max: 7,
-              aggravated: 2,
-              lethal: 1,
-              bashing: 2
-            },
-            renown: {
-              cunning: 1,
-              glory: 0,
-              honor: 0,
-              purity: 1,
-              wisdom: 1
-            },
-            gifts: {
-              moon: [
-                {
-                  name: "New Moon",
-                  dots: 1
-                }
-              ],
-              shadow: [
-                {
-                  name: "Hit and Run",
-                  list: "Evasion"
-                },
-                {
-                  name: "Running Silent",
-                  list: "Stealth"
-                }
-              ],
-              wolf: [
-                {
-                  name: "Skin Thief",
-                  list: "Change"
-                }
-              ]
-            },
-            rites: ["Hunting Ground"],
-            experiences: 1,
-            beats: 1,
-            aspirations: ["To be king, again", "Find a lcous", "Wear my crown", "", ""],
-            notes: "These are my notes.",
-            touchstones: {
-              flesh: "",
-              spirit: ""
-            },
-            kuruth_triggers: "",
-            conditions: ""
-          }
+            shadow: [
+              "Hit and Run",
+              "Running Silent"
+            ],
+            wolf: [
+              "Skin Thief"
+            ]
+          },
+          rites: [
+            "Hunting Ground"
+          ],
+          experiences: 1,
+          beats: 1,
+          aspirations: [
+            "To be king, again",
+            "Find a locus",
+            "Wear my crown",
+            "",
+            ""
+          ],
+          notes: "These are my notes.",
+          touchstones: {
+            flesh: "",
+            spirit: "Bran"
+          },
+          kuruth_triggers: "",
+          conditions: ""
         }
-      };
-      return window.data;
-    },
-    components: {
-      CofD2e,
-      WtF2e
-    }
-  };
+      }
+    };
+    return window.data;
+  },
+  components: {
+    CofD2e,
+    WtF2e
+  }
+};
 </script>
