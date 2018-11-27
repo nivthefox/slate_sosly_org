@@ -196,7 +196,7 @@
           </div>
           <div>
             <label>Speed:</label>
-            <span>{{ data.sheet.size + data.sheet.strength + data.sheet.dexterity }}</span>
+            <span>{{ parseInt(data.sheet.size) + data.sheet.strength + data.sheet.dexterity }}</span>
           </div>
           <div>
             <label>Perception:</label>
@@ -229,7 +229,7 @@
           <div>&nbsp;</div>
           <div>
             <label>Size:</label>
-            <span>{{ data.sheet.size + 1 }}</span>
+            <span>{{ parseInt(data.sheet.size) + 1 }}</span>
           </div>
           <div>
             <label>Defense:</label>
@@ -241,7 +241,7 @@
           </div>
           <div>
             <label>Speed:</label>
-            <span>{{ data.sheet.size + 1 + data.sheet.strength + 1 + data.sheet.dexterity }}</span>
+            <span>{{ parseInt(data.sheet.size) + 1 + data.sheet.strength + 1 + data.sheet.dexterity }}</span>
           </div>
           <div>
             <label>Perception:</label>
@@ -276,7 +276,7 @@
           <div>&nbsp;</div>
           <div>
             <label>Size:</label>
-            <span>{{ data.sheet.size + 2 }}</span>
+            <span>{{ parseInt(data.sheet.size) + 2 }}</span>
           </div>
           <div>
             <label>Defense:</label>
@@ -288,7 +288,7 @@
           </div>
           <div>
             <label>Speed:</label>
-            <span>{{ data.sheet.size + 2 + data.sheet.strength + 3 + data.sheet.dexterity + 1 }}</span>
+            <span>{{ parseInt(data.sheet.size) + 2 + data.sheet.strength + 3 + data.sheet.dexterity + 1 }}</span>
           </div>
           <div>
             <label>Perception:</label>
@@ -330,7 +330,7 @@
           <div>&nbsp;</div>
           <div>
             <label>Size:</label>
-            <span>{{ data.sheet.size + 1 }}</span>
+            <span>{{ parseInt(data.sheet.size) + 1 }}</span>
           </div>
           <div>
             <label>Defense:</label>
@@ -342,7 +342,7 @@
           </div>
           <div>
             <label>Speed:</label>
-            <span>{{ data.sheet.size + 1 + data.sheet.strength + 2 + data.sheet.dexterity + 2 }}</span>
+            <span>{{ parseInt(data.sheet.size) + 1 + data.sheet.strength + 2 + data.sheet.dexterity + 2 }}</span>
           </div>
           <div>
             <label>Perception:</label>
