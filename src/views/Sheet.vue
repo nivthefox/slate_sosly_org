@@ -28,28 +28,33 @@
 </template>
 
 <script>
-  import CofD2e from "../components/sheets/CofD2e.vue";
+import CofD2e from "../components/sheets/CofD2e.vue";
   import WtF2e from "../components/sheets/WtF2e.vue";
 
-  window.data = {sheet: {}};
-  window.dev = window.location.hostname === 'localhost' || window.location.hostname === 'dev.slate.sosly.org';
-
+window.data = {sheet: {}};
 export default {
   name: "sheet",
-  created: function () {
+  created() {
     this.fetchData();
   },
-  data: function () {
+  computed: {
+    isDev() {
+      return window.location.hostname !== 'slate.sosly.org';
+    },
+    serviceUri() {
+      return this.isDev ? 'slatebot-dev.herokuapp.com' : 'slatebot.herokuapp.com';
+    }
+  },
+  data() {
     return window.data;
   },
   watch: {
     sheet: {
-      handler: function(next, prev) {
+      handler(next, prev) {
         if (!prev.id) {
           return;
         }
-        const uri = window.dev ? 'slatebot-dev.herokuapp.com' : 'slatebot.herokuapp.com';
-        this.$http.post(`https://${uri}/sheets/${this.$route.params.id}`, next, {
+        this.$http.post(`https://${this.serviceUri}/sheets/${this.$route.params.id}`, next, {
           options: {
             headers: {
               "Content-Type": "application/json"
@@ -61,8 +66,8 @@ export default {
     }
   },
   methods: {
-    fetchData: function() {
-      this.$http.get(`https://slatebot-dev.herokuapp.com/sheets/${this.$route.params.id}`)
+    fetchData() {
+      this.$http.get(`https://${this.serviceUri}/sheets/${this.$route.params.id}`)
         .then((res) => window.data.sheet = res.data);
     }
   },

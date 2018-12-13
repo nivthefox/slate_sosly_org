@@ -152,7 +152,7 @@
         </fieldset>
         <fieldset class="experiences">
           <label>Experiences</label>
-          <input type="number" v-model="data.sheet.experiences"/>
+          <input type="number" v-model.number="data.sheet.experiences"/>
         </fieldset>
       </section>
     </article>
