@@ -22,7 +22,7 @@
 <template>
   <fieldset class="aspirations">
     <h1>Aspirations</h1>
-    <div v-for="(aspiration, i) of data.sheet.aspirations" v-bind:key="i">
+    <div v-for="(_, i) of data.sheet.aspirations" v-bind:key="i">
       <input type="text" v-model="data.sheet.aspirations[i]" />
     </div>
   </fieldset>
@@ -31,6 +31,11 @@
 <script>
   export default {
     name: 'Aspirations',
-    props: ['data']
+    props: ['data'],
+    created() {
+      if (this.data.sheet.aspirations.length === 0) {
+        this.data.sheet.aspirations = ['', '', ''];
+      }
+    }
   }
 </script>
