@@ -29,8 +29,8 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: "/",
-      name: "sheet",
+      path: "/sheets/:id",
+      name: "sheets",
       component: Sheet
     }
   ]

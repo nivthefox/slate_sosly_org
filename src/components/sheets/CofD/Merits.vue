@@ -24,9 +24,15 @@
   <fieldset class="merits">
     <h1>Merits</h1>
 
-    <div v-for="(merit, idx) of data.sheet.merits" v-bind:key="idx">
-      <input type="text" v-model="merit.name" />
-      <DotGroup max="5" min="0" v-bind:value="merit.dots" v-on:dots="merit.dots = $event"></DotGroup>
+    <div class="merit-list">
+      <div class="merit" v-for="(merit, idx) of data.sheet.merits" v-bind:key="idx">
+        <input type="text" v-model="merit.name" />
+        <DotGroup max="5" min="0" v-bind:value="merit.dots" v-on:dots="merit.dots = $event"></DotGroup>
+        <i class="far fa-minus-square" @click="data.sheet.merits.splice(idx, 1)"></i>
+      </div>
+    </div>
+    <div class="control">
+      <span title="add a merit" @click="data.sheet.merits.push({name: '', dots: 0})"><i class="far fa-plus-square"></i>add a merit</span>
     </div>
   </fieldset>
 </template>
@@ -36,16 +42,48 @@
     padding-left: 0.1in;
     padding-top: 0.2in;
 
-    div {
-      input[type="text"] {
-        text-align: left;
-        width: 290px;
+    div.merit-list {
+      height: 11em;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      div.merit {
+        input[type="text"] {
+          text-align: left;
+          width: 250px;
+        }
+
+        i.fa-minus-square {
+          margin-left: 0.5em;
+          cursor: pointer;
+
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+
+    div.control {
+      text-align: right;
+
+      span {
+        color: black;
+        cursor: pointer;
+        &:hover {
+          color: limegreen;
+        }
+
+        i {
+          margin-right: 0.5em;
+        }
       }
     }
   }
 </style>
 <script>
   import DotGroup from "./DotGroup";
+
   export default {
     name: 'Merits',
     props: ['data'],

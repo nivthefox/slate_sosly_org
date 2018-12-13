@@ -22,30 +22,48 @@
 
 <template>
   <div class="sheet">
-    <CofD2e v-if="sheet.type === 'cofd2e'" v-bind:data="sheet"></CofD2e>
-    <WtF2e v-if="sheet.type === 'wtf2e'" v-bind:data="sheet"></WtF2e>
+    <CofD2e v-if="sheet.system === 'cofd2e'" v-bind:data="sheet"></CofD2e>
+    <WtF2e v-if="sheet.system === 'wtf2e'" v-bind:data="sheet"></WtF2e>
   </div>
 </template>
 
 <script>
-import CofD2e from "@/components/sheets/CofD2e.vue";
-import WtF2e from "@/components/sheets/WtF2e.vue";
+  import CofD2e from "../components/sheets/CofD2e.vue";
+  import WtF2e from "../components/sheets/WtF2e.vue";
+
+  window.data = {sheet: {}};
+  window.dev = window.location.hostname === 'localhost' || window.location.hostname === 'dev.slate.sosly.org';
 
 export default {
   name: "sheet",
   created: function () {
-      this.fetchData();
+    this.fetchData();
   },
-  data: function() {
-    window.data = window.data || {sheet: {}};
+  data: function () {
     return window.data;
   },
-  methods: {
-    fetchData: function () {
-      this.$http.get('https://slatebot-dev.herokuapps.com/sheets/1069722894365364224')
-        .then((res) => {
-          window.data = res.data;
+  watch: {
+    sheet: {
+      handler: function(next, prev) {
+        if (!prev.id) {
+          return;
+        }
+        const uri = window.dev ? 'slatebot-dev.herokuapp.com' : 'slatebot.herokuapp.com';
+        this.$http.post(`https://${uri}/sheets/${this.$route.params.id}`, next, {
+          options: {
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
         });
+      },
+      deep: true
+    }
+  },
+  methods: {
+    fetchData: function() {
+      this.$http.get(`https://slatebot-dev.herokuapp.com/sheets/${this.$route.params.id}`)
+        .then((res) => window.data.sheet = res.data);
     }
   },
   components: {
