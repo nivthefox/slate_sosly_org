@@ -111,6 +111,15 @@ $pencil: #333333;
       & > div {
         border-right-color: $brown;
       }
+      label {
+        font-family: "ArnovaITC TT"
+      }
+      input {
+        width: 170px;
+      }
+    }
+    fieldset.merits div.merit-list {
+      height: 11em;
     }
     .traits {
       display: inline-block;

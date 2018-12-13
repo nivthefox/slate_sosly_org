@@ -514,7 +514,7 @@
 </script>
 
 <style lang="scss">
-@import "sass/cofd";
+@import "sass/basecofd";
 @import "sass/wtf2e";
 @import "../../assets/fonts/wtf2e.css";
 </style>

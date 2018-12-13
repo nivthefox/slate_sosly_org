@@ -43,7 +43,6 @@
     padding-top: 0.2in;
 
     div.merit-list {
-      height: 11em;
       overflow-y: auto;
       overflow-x: hidden;
 

@@ -1,0 +1,205 @@
+// Copyright (c) 2018 Kevin Kragenbrink, II
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+$blue: blue;
+
+#cofd2e {
+  zoom: 1;
+
+  margin: 0 auto;
+  padding: 0.5in 0;
+  position: relative;
+  width: 8.5in;
+
+  .page {
+    // General
+    &:before {
+      background-image: url("../../assets/CofD/mortal-skull.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 250px;
+      opacity: 0.2;
+    }
+    & > section, & > fieldset {
+      header {
+        color: $blue;
+        font-family: "PlasticMan";
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+      }
+
+      h1, h2 {
+        text-align: center;
+        font-weight: normal;
+      }
+
+      h1 {
+        color: $blue;
+        font-family: Escalido;
+        font-size: 14pt;
+      }
+
+      h2 {
+        font-family: Goudy;
+        font-size: 7pt;
+        font-style: italic;
+        padding-bottom: 0.1in;
+      }
+    }
+
+    .personal-info {
+      input {
+        // left
+
+        // middle
+        &#virtue {
+          width: 154px;
+        }
+        &#vice {
+          width: 170px;
+        }
+        &#concept {
+          width: 140px;
+        }
+
+        // right
+        &#faction {
+          width: 154px;
+        }
+        &#group {
+          width: 167px;
+        }
+        &#template {
+          width: 144px;
+        }
+      }
+
+      label {
+        color: $blue;
+        font-family: Escalido;
+        font-size: 13pt;
+      }
+    }
+    .attributes {
+      th {
+        border-right-color: $blue;
+        color: $blue;
+      }
+      td {
+        border-right-color: $blue;
+      }
+    }
+    .skills {
+      & > div {
+        border-right-color: $blue;
+      }
+      label {
+        font-family: Goudy;
+      }
+      input {
+        width: 190px;
+      }
+    }
+    fieldset.merits div.merit-list {
+      height: 18em;
+    }
+    .traits {
+      display: inline-block;
+      float: right;
+      padding-left: 0;
+      vertical-align: top;
+      width: 50%;
+
+      .traits-left,
+      .traits-right {
+        float: left;
+        width: 50%;
+      }
+      .conditions,
+      .willpower,
+      .integrity,
+      .aspirations {
+        padding: 0.1in 0.1in 0;
+        h1 {
+          margin-bottom: 0.1in;
+        }
+      }
+      .aspirations {
+        input {
+          text-align: center;
+          width: 100%;
+        }
+      }
+      .conditions {
+        textarea {
+          display: block;
+          height: 0.5in;
+          margin: 0 auto 0.1in;
+          overflow-y: auto;
+          padding: 0.1in;
+          resize: none;
+          text-align: left;
+          width: 90%;
+        }
+      }
+      .willpower,
+      .integrity {
+        text-align: center;
+      }
+      fieldset.health {
+        margin-top: 0.2in;
+        text-align: center;
+      }
+    }
+    .experience {
+      padding: 0.1in;
+      display: inline-block;
+      width: 50%;
+
+      .beats, .experiences {
+        display:  inline-block;
+        width: 50%;
+
+        .dot-group {
+          float: right;
+
+          .dot span {
+            border-radius: 0;
+          }
+        }
+
+        input {
+          width: 4em;
+          text-align: right;
+          padding: 0;
+        }
+
+        label {
+          font-family: Goudy;
+          font-size: 13pt;
+        }
+      }
+      .experiences {
+        text-align: center;
+      }
+    }
+  }
+}

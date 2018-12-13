@@ -200,7 +200,6 @@
 
       label {
         display: inline-block;
-        font-family: "ArnovaITC TT";
         font-size: 13pt;
       }
 
