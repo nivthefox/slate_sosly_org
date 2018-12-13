@@ -32,6 +32,7 @@
   import WtF2e from "../components/sheets/WtF2e.vue";
 
   window.data = {sheet: {}};
+  window.uri = window.location.hostname === 'slate.sosly.org' ? 'slatebot.herokuapp.com' : 'slatebot-dev.herokuapp.com';
 
 export default {
   name: "sheet",
@@ -47,7 +48,7 @@ export default {
         if (!prev.id) {
           return;
         }
-        this.$http.post(`https://slatebot-dev.herokuapp.com/sheets/${this.$route.params.id}`, next, {
+        this.$http.post(`https://${window.uri}/sheets/${this.$route.params.id}`, next, {
           options: {
             headers: {
               "Content-Type": "application/json"
@@ -60,7 +61,7 @@ export default {
   },
   methods: {
     fetchData: function() {
-      this.$http.get(`https://slatebot-dev.herokuapp.com/sheets/${this.$route.params.id}`)
+      this.$http.get(`https://${window.uri}/sheets/${this.$route.params.id}`)
         .then((res) => window.data.sheet = res.data);
     }
   },
