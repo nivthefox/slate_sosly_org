@@ -26,7 +26,7 @@
 
     <div class="merit-list">
       <div class="merit" v-for="(merit, idx) of data.sheet.merits" v-bind:key="idx">
-        <input type="text" v-model="merit.name" />
+        <input type="text" v-model.trim.lazy="merit.name" />
         <DotGroup max="5" min="0" v-bind:value="merit.dots" v-on:dots="merit.dots = $event"></DotGroup>
         <i class="far fa-minus-square" @click="data.sheet.merits.splice(idx, 1)"></i>
       </div>

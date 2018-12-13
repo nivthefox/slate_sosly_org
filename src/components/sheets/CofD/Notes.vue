@@ -35,7 +35,7 @@
           </div>
           <div v-if="note.edit">
             <input type="text" v-model="note.title" />
-            <VueTrix v-model="note.content" />
+            <VueTrix v-model.lazy="note.content" />
           </div>
         </div>
       </div>

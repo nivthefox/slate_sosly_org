@@ -23,7 +23,7 @@
   <fieldset class="aspirations">
     <h1>Aspirations</h1>
     <div v-for="(_, i) of data.sheet.aspirations" v-bind:key="i">
-      <input type="text" v-model="data.sheet.aspirations[i]" />
+      <input type="text" v-model.trim.lazy="data.sheet.aspirations[i]" />
     </div>
   </fieldset>
 </template>

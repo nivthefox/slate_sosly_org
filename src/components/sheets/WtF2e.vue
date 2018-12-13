@@ -36,7 +36,7 @@
         <section class="left">
           <div>
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" v-model.trim="data.name"/>
+            <input type="text" id="name" name="name" v-model.trim.lazy="data.name"/>
           </div>
           <div>
             <label for="playerName">Player:</label>
@@ -44,35 +44,35 @@
           </div>
           <div>
             <label for="chronicle">Chronicle:</label>
-            <input type="text" id="chronicle" name="chronicle" v-model.trim="data.sheet.chronicle"/>
+            <input type="text" id="chronicle" name="chronicle" v-model.trim.lazy="data.sheet.chronicle"/>
           </div>
         </section>
         <section class="middle">
           <div>
             <label for="blood">Blood:</label>
-            <input type="text" id="blood" name="blood" v-model.trim="data.sheet.blood"/>
+            <input type="text" id="blood" name="blood" v-model.trim.lazy="data.sheet.blood"/>
           </div>
           <div>
             <label for="bone">Bone:</label>
-            <input type="text" id="bone" name="bone" v-model.trim="data.sheet.bone"/>
+            <input type="text" id="bone" name="bone" v-model.trim.lazy="data.sheet.bone"/>
           </div>
           <div>
             <label for="concept">Concept:</label>
-            <input type="text" id="concept" name="concept" v-model.trim="data.sheet.concept"/>
+            <input type="text" id="concept" name="concept" v-model.trim.lazy="data.sheet.concept"/>
           </div>
         </section>
         <section class="right">
           <div>
             <label for="auspice">Auspice:</label>
-            <input type="text" id="auspice" name="auspice" v-model.trim="data.sheet.auspice"/>
+            <input type="text" id="auspice" name="auspice" v-model.trim.lazy="data.sheet.auspice"/>
           </div>
           <div>
             <label for="tribe">Tribe:</label>
-            <input type="text" id="tribe" name="tribe" v-model.trim="data.sheet.tribe"/>
+            <input type="text" id="tribe" name="tribe" v-model.trim.lazy="data.sheet.tribe"/>
           </div>
           <div>
             <label for="lodge">Lodge:</label>
-            <input type="text" id="lodge" name="lodge" v-model.trim="data.sheet.lodge"/>
+            <input type="text" id="lodge" name="lodge" v-model.trim.lazy="data.sheet.lodge"/>
           </div>
         </section>
       </fieldset>
@@ -406,13 +406,13 @@
         <header>Other Traits</header>
         <fieldset>
           <h1>Flesh Touchstone</h1>
-          <textarea v-model="data.sheet.touchstones.flesh"></textarea>
+          <textarea v-model.trim.lazy="data.sheet.touchstones.flesh"></textarea>
           <h1>Spirit Touchstone</h1>
-          <textarea v-model="data.sheet.touchstones.spirit"></textarea>
+          <textarea v-model.trim.lazy="data.sheet.touchstones.spirit"></textarea>
           <h1>Kuruth Triggers</h1>
-          <textarea v-model="data.sheet.kuruth_triggers"></textarea>
+          <textarea v-model.trim.lazy="data.sheet.kuruth_triggers"></textarea>
           <h1>Conditions</h1>
-          <textarea v-model="data.sheet.conditions"></textarea>
+          <textarea v-model.trim.lazy="data.sheet.conditions"></textarea>
         </fieldset>
       </section>
       <fieldset class="gifts-and-rites">
@@ -425,7 +425,7 @@
 
           <div class="gift-list">
             <div v-for="gift of data.sheet.gifts.moon">
-              <input type="text" v-model="gift.list" />
+              <input type="text" v-model.trim.lazy="gift.list" />
               <DotGroup min="0" max="5" v-bind:value="gift.dots"
                 v-on:dots="gift.dots = $event"></DotGroup>
             </div>
@@ -437,7 +437,7 @@
           <div class="gift-list-wrapper">
             <div class="gift-list">
               <div class="gift" v-for="(_, idx) of data.sheet.gifts.shadow" v-bind:key="idx">
-                <input type="text" v-model="data.sheet.gifts.shadow[idx]" />
+                <input type="text" v-model.lazy="data.sheet.gifts.shadow[idx]" />
                 <i class="far fa-minus-square" @click="data.sheet.gifts.shadow.splice(idx, 1)"></i>
               </div>
             </div>
@@ -452,7 +452,7 @@
           <div class="gift-list-wrapper">
             <div class="gift-list">
               <div class="gift" v-for="(_, idx) of data.sheet.gifts.wolf" v-bind:key="idx">
-                <input type="text" v-model="data.sheet.gifts.wolf[idx]" />
+                <input type="text" v-model.trim.lazy="data.sheet.gifts.wolf[idx]" />
                 <i class="far fa-minus-square" @click="data.sheet.gifts.wolf.splice(idx, 1)"></i>
               </div>
             </div>
@@ -467,7 +467,7 @@
           <div class="gift-list-wrapper">
             <div class="gift-list">
               <div class="gift" v-for="(_, idx) of data.sheet.rites" v-bind:key="idx">
-                <input type="text" v-model="data.sheet.rites[idx]" />
+                <input type="text" v-model.trim.lazy="data.sheet.rites[idx]" />
                 <i class="far fa-minus-square" @click="data.sheet.rites.splice(idx, 1)"></i>
               </div>
             </div>
