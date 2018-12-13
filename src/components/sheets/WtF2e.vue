@@ -39,8 +39,8 @@
             <input type="text" id="name" name="name" v-model.trim="data.name"/>
           </div>
           <div>
-            <label for="player">Player:</label>
-            <input type="text" id="player" name="player" v-model.trim="data.userId" disabled/>
+            <label for="playerName">Player:</label>
+            <input type="text" id="playerName" name="playerName" v-model.trim="data.playerName" disabled/>
           </div>
           <div>
             <label for="chronicle">Chronicle:</label>
@@ -85,11 +85,10 @@
         <fieldset class="health">
           <h1>Health</h1>
           <h2>(+2 Dalu form, +4 Gauru form, +3 Urshul form)</h2>
-          <DotGroup min="1" max="20" v-bind:value="data.sheet.health.max"
+          <DotGroup min="1" max="20" newline="10" v-bind:value="data.sheet.health.max"
                     v-on:dots="data.sheet.health.max = $event"></DotGroup>
           <br/>
-          <Health v-bind:max="data.sheet.health.max" v-bind:bashing="data.sheet.health.bashing"
-                  v-bind:lethal="data.sheet.health.lethal" v-bind:aggravated="data.sheet.health.aggravated"></Health>
+          <Health v-bind:health="data.sheet.health"></Health>
         </fieldset>
         <div class="traits-left">
           <fieldset class="renown">
@@ -97,28 +96,28 @@
 
             <div>
               <label for="cunning">Cunning</label>
-              <DotGroup max="5" min="0" v-bind:value="data.sheet.renown.cunning"
-                        v-on:dots="data.sheet.renown.cunning = $event"></DotGroup>
+              <DotGroup id="cunning" max="5" min="0" v-bind:value="data.sheet.cunning"
+                        v-on:dots="data.sheet.cunning = $event"></DotGroup>
             </div>
             <div>
               <label for="glory">Glory</label>
-              <DotGroup max="5" min="0" v-bind:value="data.sheet.renown.glory"
-                        v-on:dots="data.sheet.renown.glory = $event"></DotGroup>
+              <DotGroup id="glory" max="5" min="0" v-bind:value="data.sheet.glory"
+                        v-on:dots="data.sheet.glory = $event"></DotGroup>
             </div>
             <div>
               <label for="honor">Honor</label>
-              <DotGroup max="5" min="0" v-bind:value="data.sheet.renown.honor"
-                        v-on:dots="data.sheet.renown.honor = $event"></DotGroup>
+              <DotGroup id="honor" max="5" min="0" v-bind:value="data.sheet.honor"
+                        v-on:dots="data.sheet.honor = $event"></DotGroup>
             </div>
             <div>
               <label for="purity">Purity</label>
-              <DotGroup max="5" min="0" v-bind:value="data.sheet.renown.purity"
-                        v-on:dots="data.sheet.renown.purity = $event"></DotGroup>
+              <DotGroup id="purity" max="5" min="0" v-bind:value="data.sheet.purity"
+                        v-on:dots="data.sheet.purity = $event"></DotGroup>
             </div>
             <div>
               <label for="wisdom">Wisdom</label>
-              <DotGroup max="5" min="0" v-bind:value="data.sheet.renown.wisdom"
-                        v-on:dots="data.sheet.renown.wisdom = $event"></DotGroup>
+              <DotGroup id="wisdom" max="5" min="0" v-bind:value="data.sheet.wisdom"
+                        v-on:dots="data.sheet.wisdom = $event"></DotGroup>
             </div>
           </fieldset>
           <aspirations v-bind:data="data"></aspirations>
@@ -126,7 +125,7 @@
         <div class="traits-right">
           <fieldset class="willpower">
             <h1>Willpower</h1>
-            <DotGroup min="0" v-bind:max="data.sheet.willpower.max" v-bind:value="data.sheet.willpower.current"
+            <DotGroup min="0" v-bind:max="(data.sheet.resolve + data.sheet.composure)" v-bind:value="data.sheet.willpower.current"
                       v-on:dots="data.sheet.willpower.current = $event"></DotGroup>
           </fieldset>
           <fieldset class="primal-urge">
@@ -423,69 +422,58 @@
 
         <section class="moon-gifts">
           <h1>Moon Gifts</h1>
-          <div>
-            <input type="text" v-model="data.sheet.gifts.moon[0].list" />
-            <DotGroup min="0" max="5" v-bind:value="data.sheet.gifts.moon[0].dots" 
-              v-on:dots="data.sheet.gifts.moon[0].dots = $event"></DotGroup>
-          </div>
-          <div>
-            <input type="text" v-model="data.sheet.gifts.moon[1].list" />
-            <DotGroup min="0" max="5" v-bind:value="data.sheet.gifts.moon[1].dots" 
-              v-on:dots="data.sheet.gifts.moon[1].dots = $event"></DotGroup>
+
+          <div class="gift-list">
+            <div v-for="gift of data.sheet.gifts.moon">
+              <input type="text" v-model="gift.list" />
+              <DotGroup min="0" max="5" v-bind:value="gift.dots"
+                v-on:dots="gift.dots = $event"></DotGroup>
+            </div>
           </div>
         </section>
         <section class="shadow-gifts">
           <h1>Shadow Gifts</h1>
 
-          <div><input type="text" v-model="data.sheet.gifts.shadow[0]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[1]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[2]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[3]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[4]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[5]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[6]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[7]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[8]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.shadow[9]" /></div>
+          <div class="gift-list-wrapper">
+            <div class="gift-list">
+              <div class="gift" v-for="(_, idx) of data.sheet.gifts.shadow" v-bind:key="idx">
+                <input type="text" v-model="data.sheet.gifts.shadow[idx]" />
+                <i class="far fa-minus-square" @click="data.sheet.gifts.shadow.splice(idx, 1)"></i>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <span title="add a shadow gift" @click="data.sheet.gifts.shadow.push('')"><i class="far fa-plus-square"></i>add a shadow gift</span>
+          </div>
         </section>
         <section class="wolf-gifts">
           <h1>Wolf Gifts</h1>
 
-          <div><input type="text" v-model="data.sheet.gifts.wolf[0]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[1]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[2]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[3]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[4]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[5]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[6]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[7]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[8]" /></div>
-          <div><input type="text" v-model="data.sheet.gifts.wolf[9]" /></div>
+          <div class="gift-list-wrapper">
+            <div class="gift-list">
+              <div class="gift" v-for="(_, idx) of data.sheet.gifts.wolf" v-bind:key="idx">
+                <input type="text" v-model="data.sheet.gifts.wolf[idx]" />
+                <i class="far fa-minus-square" @click="data.sheet.gifts.wolf.splice(idx, 1)"></i>
+              </div>
+            </div>
+          </div>
+          <div class="control">
+            <span title="add a wolf gift" @click="data.sheet.gifts.wolf.push('')"><i class="far fa-plus-square"></i>add a wolf gift</span>
+          </div>
         </section>
         <section class="rites">
           <h1>Rites</h1>
 
-          <div>
-            <input type="text" v-model="data.sheet.rites[0]" />
-            <input type="text" v-model="data.sheet.rites[1]" />
-            <input type="text" v-model="data.sheet.rites[2]" />
-            <input type="text" v-model="data.sheet.rites[3]" />
-            <input type="text" v-model="data.sheet.rites[4]" />
-            <input type="text" v-model="data.sheet.rites[5]" />
-            <input type="text" v-model="data.sheet.rites[6]" />
-            <input type="text" v-model="data.sheet.rites[7]" />
-            <input type="text" v-model="data.sheet.rites[8]" />
+          <div class="gift-list-wrapper">
+            <div class="gift-list">
+              <div class="gift" v-for="(_, idx) of data.sheet.rites" v-bind:key="idx">
+                <input type="text" v-model="data.sheet.rites[idx]" />
+                <i class="far fa-minus-square" @click="data.sheet.rites.splice(idx, 1)"></i>
+              </div>
+            </div>
           </div>
-          <div>
-            <input type="text" v-model="data.sheet.rites[9]" />
-            <input type="text" v-model="data.sheet.rites[10]" />
-            <input type="text" v-model="data.sheet.rites[11]" />
-            <input type="text" v-model="data.sheet.rites[12]" />
-            <input type="text" v-model="data.sheet.rites[13]" />
-            <input type="text" v-model="data.sheet.rites[14]" />
-            <input type="text" v-model="data.sheet.rites[15]" />
-            <input type="text" v-model="data.sheet.rites[16]" />
-            <input type="text" v-model="data.sheet.rites[17]" />
+          <div class="control">
+            <span title="add a rite" @click="data.sheet.rites.push('')"><i class="far fa-plus-square"></i>add a rite</span>
           </div>
         </section>
       </fieldset>
@@ -494,32 +482,31 @@
       <header>
         <img src="@/assets/CofD/WtF2e.png" />
       </header>
-      <fieldset class="notes">
-        <header>Notes</header>
-        <textarea v-model="data.sheet.notes"></textarea>
-      </fieldset>
+      <Notes v-bind:notes="data.sheet.notes"></Notes>
     </article>
   </form>
 </template>
 
 <script>
-import Aspirations from "./CofD/Aspirations";
-import Attributes from "./CofD/Attributes";
-import DotGroup from "./CofD/DotGroup";
-import Health from "./CofD/Health";
-import Merits from "./CofD/Merits";
-import Skills from "./CofD/Skills";
-import TOC from "./TOC";
+  import Aspirations from "./CofD/Aspirations";
+  import Attributes from "./CofD/Attributes";
+  import DotGroup from "./CofD/DotGroup";
+  import Health from "./CofD/Health";
+  import Merits from "./CofD/Merits";
+  import Notes from "./CofD/Notes";
+  import Skills from "./CofD/Skills";
+  import TOC from "./TOC";
 
-export default {
+  export default {
   name: "WtF2e",
-  props: ["data"],
+  props: ['data'],
   components: {
     Aspirations,
     Attributes,
     DotGroup,
     Health,
     Merits,
+    Notes,
     Skills,
     TOC
   }
@@ -528,320 +515,6 @@ export default {
 
 <style lang="scss">
 @import "sass/cofd";
+@import "sass/wtf2e";
 @import "../../assets/fonts/wtf2e.css";
-
-$brown: saddlebrown;
-$pencil: #333333;
-
-#wtf2e {
-  zoom: 1;
-
-  margin: 0 auto;
-  padding: 0.5in 0;
-  position: relative;
-  width: 8.5in;
-
-  .page {
-    background-image: url('../../assets/CofD/forsaken-background.jpg');
-    background-size: 100% 100%;
-
-    // General
-    &:before {
-      background-color: $brown;
-      mask-image: url("../../assets/CofD/forsaken-skull.png");
-      mask-position: center center;
-      mask-repeat: no-repeat, no-repeat;
-      opacity: 0.2;
-    }
-    & > section, & > fieldset {
-      header {
-        color: $brown;
-        font-family: "Flat Earth Scribe";
-        text-align: center;
-        text-transform: uppercase;
-        width: 100%;
-      }
-
-      h1, h2 {
-        text-align: center;
-        font-weight: normal;
-      }
-
-      h1 {
-        color: $brown;
-        font-family: "Treefrog2";
-        font-size: 14pt;
-      }
-
-      h2 {
-        font-family: Skia;
-        font-size: 7pt;
-        font-style: italic;
-        padding-bottom: 0.1in;
-      }
-    }
-
-    // Page 1
-    .personal-info {
-      input {
-        // middle
-        &#blood {
-          width: 154px;
-        }
-        &#bone {
-          width: 158px;
-        }
-
-        // right
-        &#auspice {
-          width: 133px;
-        }
-        &#tribe {
-          width: 148px;
-        }
-        &#lodge {
-          width: 148px;
-        }
-      }
-
-      label {
-        color: $brown;
-        font-family: "Treefrog2";
-        font-size: 15pt;
-      }
-    }
-    .attributes {
-      th {
-        border-right-color: $brown;
-        color: $brown;
-      }
-      td {
-        border-right-color: $brown;
-      }
-    }
-    .skills {
-      & > div {
-        border-right-color: $brown;
-      }
-    }
-    .traits {
-      display: inline-block;
-      float: right;
-      padding-left: 0;
-      vertical-align: top;
-      width: 50%;
-    }
-    .renown {
-      label {
-        font-family: "ArnovaITC TT";
-        font-size: 13pt;
-      }
-
-      .dot-group {
-        float: right;
-      }
-    }
-    .aspirations {
-      input {
-        text-align: center;
-        width: 100%;
-      }
-    }
-    .traits-left,
-    .traits-right {
-      float: left;
-      width: 50%;
-    }
-    .willpower,
-    .essence,
-    .primal-urge,
-    .harmony,
-    .renown,
-    .aspirations {
-      padding: 0.1in 0.1in 0;
-      h1 {
-        margin-bottom: 0.1in;
-      }
-    }
-    .willpower, 
-    .primal-urge, 
-    .essence, 
-    .harmony  {
-      text-align: center;
-    }
-    fieldset.health {
-      margin-top: 0.2in;
-      text-align: center;
-    }
-    .experience {
-      padding: 0.1in;
-      display: inline-block;
-      width: 50%;
-
-      .beats, .experiences {
-        display:  inline-block;
-        width: 50%;
-
-        .dot-group {
-          float: right;
-
-          .dot span {
-            border-radius: 0;
-          }
-        }
-
-        input {
-          width: 4em;
-          text-align: right;
-          padding: 0;
-        }
-
-        label {
-          font-family: "ArnovaITC TT";
-          font-size: 13pt;
-        }
-      }
-      .experiences { 
-        text-align: center; 
-      }
-    }
-
-    // Page 2
-    .forms {
-      margin-top: 0.1in;
-      section {
-        border-right: 2px solid $brown;
-        display: inline-block;
-        height: 3.5in;
-        padding: 0 0.1in;
-        vertical-align: top;
-        width: 20%;
-
-        &:last-of-type {
-          border-right: none;
-        }
-
-        input[type="number"] {
-          margin: 0 0.1in;
-          padding: 0;
-          width: 3em;
-        }
-
-        label {
-          font-family: "ArnovaITC TT";
-          font-size: 11pt;
-          font-style: normal;
-        }
-
-        label + span {
-          display: inline-block;
-          text-align: center;
-          width: 2em;
-        }
-
-        span {
-          display: block;
-          font-family: Skia;
-          font-size: 8pt;
-          font-style: italic;
-          text-align: center;
-        }
-      }
-    }
-    .other-traits {
-      display: inline-block;
-      float: left;
-      margin: 0.2in 0;
-      padding-right: 0;
-      vertical-align: top;
-      width: 33%;
-
-      fieldset {
-        border-right-color: $brown;
-        border-right-style: solid;
-        border-right-width: 2px;
-        padding-right: 0.1in;
-        margin-top: 0.2in;
-
-        h1 {
-          padding-bottom: 0.1in;
-        }
-
-        textarea {
-          display: block;
-          height: 0.5in;
-          margin: 0 auto 0.1in;
-          overflow-y: auto;
-          padding: 0.1in;
-          resize: none;
-          text-align: left;
-          width: 90%;
-        }
-      }
-    }
-    .gifts-and-rites {
-      display: inline-block;
-      float: left;
-      margin: 0.2in 0;
-      padding-left: 0.1in;
-      vertical-align: top;
-      width: 66%;
-      
-      .moon-gifts,
-      .rites {
-        margin-top: 0.1in;
-
-        div {
-          display: inline-block;
-          margin: 0;
-          width: 50%;
-
-          input[type="text"] {
-            text-align: center;
-          }
-        }
-      }
-
-      .rites {
-        div {
-          text-align: center;
-          input[type="text"] {
-            width: 230px;
-          }
-        }
-      }
-
-      .shadow-gifts,
-      .wolf-gifts {
-        display: inline-block;
-        margin: 0.1in 0 0;
-        width: 50%;
-
-        div {
-          text-align: center;
-          input[type="text"] {
-            text-align: center;
-            width: 230px;
-          }
-        }
-      }
-    }
-
-    // Page 3
-    .notes {
-      margin-top: 0.2in;
-      textarea {
-        border: 1px solid #eee;
-        display: block;
-        height: 8in;
-        margin: 0.2in auto 0;
-        overflow-y: auto;
-        padding: 0.1in;
-        resize: none;
-        text-align: left;
-        width: 7.5in;
-      }
-    }
-  }
-}
 </style>

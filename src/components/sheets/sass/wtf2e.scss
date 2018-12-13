@@ -1,0 +1,350 @@
+// Copyright (c) 2018 Kevin Kragenbrink, II
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+$brown: saddlebrown;
+$pencil: #333333;
+
+#wtf2e {
+  zoom: 1;
+
+  margin: 0 auto;
+  padding: 0.5in 0;
+  position: relative;
+  width: 8.5in;
+
+  .page {
+    background-image: url('../../assets/CofD/forsaken-background.jpg');
+    background-size: 100% 100%;
+
+    // General
+    &:before {
+      background-color: $brown;
+      mask-image: url("../../assets/CofD/forsaken-skull.png");
+      mask-position: center center;
+      mask-repeat: no-repeat, no-repeat;
+      opacity: 0.2;
+    }
+    & > section, & > fieldset {
+      header {
+        color: $brown;
+        font-family: "Flat Earth Scribe";
+        text-align: center;
+        text-transform: uppercase;
+        width: 100%;
+      }
+
+      h1, h2 {
+        text-align: center;
+        font-weight: normal;
+      }
+
+      h1 {
+        color: $brown;
+        font-family: "Treefrog2";
+        font-size: 14pt;
+      }
+
+      h2 {
+        font-family: Skia;
+        font-size: 7pt;
+        font-style: italic;
+        padding-bottom: 0.1in;
+      }
+    }
+
+    // Page 1
+    .personal-info {
+      input {
+        // middle
+        &#blood {
+          width: 154px;
+        }
+        &#bone {
+          width: 158px;
+        }
+
+        // right
+        &#auspice {
+          width: 133px;
+        }
+        &#tribe {
+          width: 148px;
+        }
+        &#lodge {
+          width: 148px;
+        }
+      }
+
+      label {
+        color: $brown;
+        font-family: "Treefrog2";
+        font-size: 15pt;
+      }
+    }
+    .attributes {
+      th {
+        border-right-color: $brown;
+        color: $brown;
+      }
+      td {
+        border-right-color: $brown;
+      }
+    }
+    .skills {
+      & > div {
+        border-right-color: $brown;
+      }
+    }
+    .traits {
+      display: inline-block;
+      float: right;
+      padding-left: 0;
+      vertical-align: top;
+      width: 50%;
+    }
+    .renown {
+      label {
+        font-family: "ArnovaITC TT";
+        font-size: 13pt;
+      }
+
+      .dot-group {
+        float: right;
+      }
+    }
+    .aspirations {
+      input {
+        text-align: center;
+        width: 100%;
+      }
+    }
+    .traits-left,
+    .traits-right {
+      float: left;
+      width: 50%;
+    }
+    .willpower,
+    .essence,
+    .primal-urge,
+    .harmony,
+    .renown,
+    .aspirations {
+      padding: 0.1in 0.1in 0;
+      h1 {
+        margin-bottom: 0.1in;
+      }
+    }
+    .willpower,
+    .primal-urge,
+    .essence,
+    .harmony  {
+      text-align: center;
+    }
+    fieldset.health {
+      margin-top: 0.2in;
+      text-align: center;
+    }
+    .experience {
+      padding: 0.1in;
+      display: inline-block;
+      width: 50%;
+
+      .beats, .experiences {
+        display:  inline-block;
+        width: 50%;
+
+        .dot-group {
+          float: right;
+
+          .dot span {
+            border-radius: 0;
+          }
+        }
+
+        input {
+          width: 4em;
+          text-align: right;
+          padding: 0;
+        }
+
+        label {
+          font-family: "ArnovaITC TT";
+          font-size: 13pt;
+        }
+      }
+      .experiences {
+        text-align: center;
+      }
+    }
+
+    // Page 2
+    .forms {
+      margin-top: 0.1in;
+      section {
+        border-right: 2px solid $brown;
+        display: inline-block;
+        height: 3.5in;
+        padding: 0 0.1in;
+        vertical-align: top;
+        width: 20%;
+
+        &:last-of-type {
+          border-right: none;
+        }
+
+        input[type="number"] {
+          margin: 0 0.1in;
+          padding: 0;
+          width: 3em;
+        }
+
+        label {
+          font-family: "ArnovaITC TT";
+          font-size: 11pt;
+          font-style: normal;
+        }
+
+        label + span {
+          display: inline-block;
+          text-align: center;
+          width: 2em;
+        }
+
+        span {
+          display: block;
+          font-family: Skia;
+          font-size: 8pt;
+          font-style: italic;
+          text-align: center;
+        }
+      }
+    }
+    .other-traits {
+      display: inline-block;
+      float: left;
+      margin: 0.2in 0;
+      padding-right: 0;
+      vertical-align: top;
+      width: 33%;
+
+      fieldset {
+        border-right-color: $brown;
+        border-right-style: solid;
+        border-right-width: 2px;
+        padding-right: 0.1in;
+        margin-top: 0.2in;
+
+        h1 {
+          padding-bottom: 0.1in;
+        }
+
+        textarea {
+          display: block;
+          height: 0.5in;
+          margin: 0 auto 0.1in;
+          overflow-y: auto;
+          padding: 0.1in;
+          resize: none;
+          text-align: left;
+          width: 90%;
+        }
+      }
+    }
+    .gifts-and-rites {
+      display: inline-block;
+      float: left;
+      margin: 0.2in 0;
+      padding-left: 0.1in;
+      vertical-align: top;
+      width: 66%;
+
+      div.control {
+        padding-right: 0.5em;
+        text-align: right;
+
+        span {
+          color: black;
+          cursor: pointer;
+          &:hover {
+            color: limegreen;
+          }
+
+          i {
+            margin-right: 0.5em;
+          }
+        }
+      }
+
+      .gift-list-wrapper {
+        height: 10em;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+
+      .rites,
+      .shadow-gifts,
+      .wolf-gifts {
+        display: inline-block;
+        margin: 0.1in 0 0;
+        width: 50%;
+
+        .gift-list {
+          div.gift {
+            text-align: left;
+
+            input[type="text"] {
+              text-align: center;
+              width: 205px;
+            }
+
+            i.fa-minus-square {
+              margin-left: 0.5em;
+              cursor: pointer;
+
+              &:hover {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+
+
+      .moon-gifts,
+      .rites {
+        margin-top: 0.1in;
+        width: 100%;
+
+        .gift-list {
+          columns: auto 2;
+          column-gap: 0.5em;
+
+          .gift {
+            break-inside: avoid;
+            page-break-inside: avoid;
+            will-change: transform;
+          }
+        }
+      }
+    }
+
+    // Page 3
+  }
+}
