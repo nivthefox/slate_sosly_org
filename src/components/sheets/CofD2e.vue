@@ -118,7 +118,7 @@
 
         <article id="page-3" class="page">
             <header>
-                <img src="@/assets/CofD/WtF2e.png" />
+              <img src="@/assets/CofD/CofD2e.png"/>
             </header>
             <Notes v-bind:notes="data.sheet.notes"></Notes>
         </article>

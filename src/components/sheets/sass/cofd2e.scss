@@ -29,6 +29,9 @@ $blue: blue;
   width: 8.5in;
 
   .page {
+    background-image: url('../../assets/CofD/mortal-background.jpg');
+    background-size: 100% 100%;
+
     // General
     &:before {
       background-image: url("../../assets/CofD/mortal-skull.png");
