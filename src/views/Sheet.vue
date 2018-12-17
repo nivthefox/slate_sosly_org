@@ -23,13 +23,15 @@
 <template>
   <div class="sheet">
     <CofD2e v-if="sheet.system === 'cofd2e'" v-bind:data="sheet"></CofD2e>
+    <CofD2eSpirit v-if="sheet.system === 'cofd2e-spirit'" v-bind:data="sheet"></CofD2eSpirit>
     <WtF2e v-if="sheet.system === 'wtf2e'" v-bind:data="sheet"></WtF2e>
   </div>
 </template>
 
 <script>
 import CofD2e from "../components/sheets/CofD2e.vue";
-  import WtF2e from "../components/sheets/WtF2e.vue";
+import CofD2eSpirit from "../components/sheets/CofD2eSpirit.vue";
+import WtF2e from "../components/sheets/WtF2e.vue";
 
 window.data = {sheet: {}};
 export default {
@@ -66,6 +68,7 @@ export default {
   },
   components: {
     CofD2e,
+    CofD2eSpirit,
     WtF2e
   }
 };

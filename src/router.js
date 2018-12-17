@@ -46,7 +46,7 @@ const router = new Router({
     },
     {
       path: "/sheets/:id",
-      name: "sheets",
+      name: "sheet",
       component: Sheet,
       meta: {
         requiresAuth: true

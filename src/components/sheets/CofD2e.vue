@@ -23,6 +23,7 @@
 <template>
   <form id="cofd2e">
     <article id="page-1" class="page">
+      <div class="overlay"></div>
       <header>
         <img src="@/assets/CofD/CofD2e.png"/>
       </header>
@@ -124,6 +125,7 @@
     </article>
 
     <article id="page-3" class="page">
+      <div class="overlay"></div>
       <header>
         <img src="@/assets/CofD/CofD2e.png"/>
       </header>
