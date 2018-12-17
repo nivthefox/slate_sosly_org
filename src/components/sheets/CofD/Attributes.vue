@@ -21,8 +21,14 @@
 //-->
 
 <template>
-  <fieldset class="attributes">
-    <header>Attributes</header>
+  <fieldset class="attributes" :disabled="locked">
+    <header>
+      Attributes
+      <div class="locks">
+        <i v-if="locked" class="fas fa-lock" @click="locked = false"></i>
+        <i v-if="!locked" class="fas fa-unlock" @click="locked = true"></i>
+      </div>
+    </header>
     <table>
       <tr>
         <th>Power</th>
@@ -88,6 +94,11 @@
   export default {
     name: "Attributes",
     props: ["data"],
+    data() {
+      return {
+        locked: true
+      };
+    },
     components: {
       DotGroup
     }

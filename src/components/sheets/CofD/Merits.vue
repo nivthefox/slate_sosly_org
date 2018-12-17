@@ -21,8 +21,14 @@
 //-->
 
 <template>
-  <fieldset class="merits">
-    <h1>Merits</h1>
+  <fieldset class="merits" :disabled="locked">
+    <h1>
+      Merits
+      <div class="locks">
+        <i v-if="locked" class="fas fa-lock" @click="locked = false"></i>
+        <i v-if="!locked" class="fas fa-unlock" @click="locked = true"></i>
+      </div>
+    </h1>
 
     <div class="merit-list">
       <div class="merit" v-for="(merit, idx) of data.sheet.merits" v-bind:key="idx">
@@ -86,6 +92,11 @@
   export default {
     name: 'Merits',
     props: ['data'],
+    data() {
+      return {
+        locked: true
+      };
+    },
     components: {DotGroup}
   }
 </script>

@@ -31,6 +31,11 @@ $pencil: #333;
   position: relative;
   width: 100%;
 
+  .locks {
+    color: black;
+    display: inline-block;
+  }
+
   &:before {
     content: "";
     height: 100%;

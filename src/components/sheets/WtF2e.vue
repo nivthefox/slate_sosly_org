@@ -91,8 +91,14 @@
           <Health v-bind:health="data.sheet.health"></Health>
         </fieldset>
         <div class="traits-left">
-          <fieldset class="renown">
-            <h1>Renown</h1>
+          <fieldset class="renown" :disabled="locks.renown">
+            <h1>
+              Renown
+              <div class="locks">
+                <i v-if="locks.renown" class="fas fa-lock" @click="locks.renown = false"></i>
+                <i v-if="!locks.renown" class="fas fa-unlock" @click="locks.renown = true"></i>
+              </div>
+            </h1>
 
             <div>
               <label for="cunning">Cunning</label>
@@ -128,8 +134,14 @@
             <DotGroup min="0" v-bind:max="(data.sheet.resolve + data.sheet.composure)" v-bind:value="data.sheet.willpower.current"
                       v-on:dots="data.sheet.willpower.current = $event"></DotGroup>
           </fieldset>
-          <fieldset class="primal-urge">
-            <h1>Primal Urge</h1>
+          <fieldset class="primal-urge" :disabled="locks.primalUrge">
+            <h1>
+              Primal Urge
+              <div class="locks">
+                <i v-if="locks.primalUrge" class="fas fa-lock" @click="locks.primalUrge = false"></i>
+                <i v-if="!locks.primalUrge" class="fas fa-unlock" @click="locks.primalUrge = true"></i>
+              </div>
+            </h1>
             <DotGroup min="1" max="10" v-bind:value="data.sheet.primal_urge"
                       v-on:dots="data.sheet.primal_urge = $event"></DotGroup>
           </fieldset>
@@ -138,8 +150,14 @@
             <DotGroup min="0" max="20" newline="10" v-bind:value="data.sheet.essence.current"
                       v-on:dots="data.sheet.essence.current = $event"></DotGroup>
           </fieldset>
-          <fieldset class="harmony">
-            <h1>Harmony</h1>
+          <fieldset class="harmony" :disabled="locks.harmony">
+            <h1>
+              Harmony
+              <div class="locks">
+                <i v-if="locks.harmony" class="fas fa-lock" @click="locks.harmony = false"></i>
+                <i v-if="!locks.harmony" class="fas fa-unlock" @click="locks.harmony = true"></i>
+              </div>
+            </h1>
             <DotGroup min="1" max="10" v-bind:value="data.sheet.harmony"
                       v-on:dots="data.sheet.harmony = $event"></DotGroup>
           </fieldset>
@@ -500,6 +518,15 @@
   export default {
   name: "WtF2e",
   props: ['data'],
+  data() {
+    return {
+      locks: {
+        harmony: true,
+        primalUrge: true,
+        renown: true
+      }
+    };
+  },
   components: {
     Aspirations,
     Attributes,

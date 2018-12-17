@@ -21,8 +21,14 @@
 //-->
 
 <template>
-  <fieldset class="skills">
-    <header>Skills</header>
+  <fieldset class="skills" :disabled="locked">
+    <header>
+      Skills
+      <div class="locks">
+        <i v-if="locked" class="fas fa-lock" @click="locked = false"></i>
+        <i v-if="!locked" class="fas fa-unlock" @click="locked = true"></i>
+      </div>
+    </header>
     <div class="mental">
       <h1>Mental</h1>
       <h2>(-3 Unskilled)</h2>
@@ -168,6 +174,11 @@
   export default {
     name: "Skills",
     props: ["data"],
+    data() {
+      return {
+        locked: true
+      };
+    },
     methods: {
       fix: function(input) {
         console.log(this.data.sheet[input].specialties);
