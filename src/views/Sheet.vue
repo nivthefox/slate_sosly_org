@@ -54,13 +54,16 @@ export default {
         if (!prev.id) {
           return;
         }
-        this.$http.post(`https://${this.serviceUri}/sheets/${this.$route.params.id}`, next, {
+        const options = {
           options: {
             headers: {
               "Content-Type": "application/json"
             }
           }
-        });
+        };
+        this.$http.post(`https://${this.serviceUri}/sheets/${this.$route.params.id}`, options)
+          .then(next)
+          .catch(console.log);
       },
       deep: true
     }
@@ -68,7 +71,8 @@ export default {
   methods: {
     fetchData() {
       this.$http.get(`https://${this.serviceUri}/sheets/${this.$route.params.id}`)
-        .then((res) => window.data.sheet = res.data);
+        .then((res) => window.data.sheet = res.data)
+        .catch(console.log);
     }
   },
   components: {
