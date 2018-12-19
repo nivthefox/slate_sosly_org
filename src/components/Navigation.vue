@@ -21,33 +21,41 @@
 //-->
 
 <template>
-    <nav>
-        <router-link to="/">Sheets</router-link>
-    </nav>
+  <nav>
+    <router-link to="/sheets" v-if="auth.isAuthenticated === true">Characters</router-link>
+  </nav>
 </template>
 
+<script>
+  export default {
+    name: "navigation",
+    props: ["auth"]
+  }
+</script>
+
 <style lang="scss">
-nav {
-  background: rgba(0, 0, 0, 0.4);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-  display: block;
-  left: 0;
-  padding: 0.2in;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+  nav {
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    display: block;
+    left: 0;
+    padding: 0.2in;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: right;
 
-  a {
-    color: rgb(255, 255, 255);
-    display: inline-block;
-    padding: 0 0.2in;
-    letter-spacing: 0.2em;
-    text-decoration: none;
+    a {
+      color: rgb(255, 255, 255);
+      display: inline-block;
+      padding: 0 0.2in;
+      letter-spacing: 0.2em;
+      text-decoration: none;
 
-    &:hover {
-      text-decoration: underline;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
-}
 </style>

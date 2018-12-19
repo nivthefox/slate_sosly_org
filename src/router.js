@@ -20,18 +20,39 @@
 
 import Vue from "vue";
 import Router from "vue-router";
+
+import Home from "./views/Home.vue";
 import Sheet from "./views/Sheet.vue";
+import Sheets from "./views/Sheets.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
     {
+      path: "/",
+      name: "home",
+      component: Home
+    },
+    {
+      path: "/sheets",
+      name: "sheets",
+      component: Sheets,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: "/sheets/:id",
       name: "sheets",
-      component: Sheet
+      component: Sheet,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
+
+export default router;

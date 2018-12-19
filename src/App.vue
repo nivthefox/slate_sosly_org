@@ -23,8 +23,8 @@
 <template>
   <div id="app">
     <reset />
-    <navigation />
-    <router-view />
+    <navigation v-if="auth.isAuthenticated" v-bind:auth="auth" />
+    <router-view v-bind:auth="auth" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </div>
@@ -36,6 +36,31 @@
 
   export default {
     name: "app",
+    created() {
+      this.$http.get("/api/auth")
+        .then((auth) => {
+          this.auth.isAuthenticated = (auth.id !== 0);
+          this.auth.user = auth;
+        })
+        .catch((err) => {
+          this.auth.isAuthenticated = false;
+          this.auth.user = null;
+          console.log(err);
+        });
+    },
+    data() {
+      return {
+        auth: {
+          isAuthenticated: false,
+          user: null
+        }
+      };
+    },
+    methods: {
+      isAuthenticated() {
+
+      }
+    },
     components: {
       Navigation,
       Reset

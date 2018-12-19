@@ -37,14 +37,6 @@ export default {
   created() {
     this.fetchData();
   },
-  computed: {
-    isDev() {
-      return window.location.hostname !== 'slate.sosly.org';
-    },
-    serviceUri() {
-      return this.isDev ? 'slatebot-dev.herokuapp.com' : 'slatebot.herokuapp.com';
-    }
-  },
   data() {
     return window.data;
   },
@@ -54,7 +46,7 @@ export default {
         if (!prev.id) {
           return;
         }
-        this.$http.post(`https://${this.serviceUri}/sheets/${this.$route.params.id}`, next, {
+        this.$http.post(`/api/sheets/${this.$route.params.id}`, next, {
           options: {
             headers: {
               "Content-Type": "application/json"
@@ -67,8 +59,9 @@ export default {
   },
   methods: {
     fetchData() {
-      this.$http.get(`https://${this.serviceUri}/sheets/${this.$route.params.id}`)
-        .then((res) => window.data.sheet = res.data);
+      this.$http.get(`/api/sheets/${this.$route.params.id}`)
+        .then((res) => window.data.sheet = res.data)
+        .catch(() => this.$router.push({path: "/"}))
     }
   },
   components: {
