@@ -30,6 +30,7 @@
     <article id="page-1" class="page">
       <header>
         <img src="@/assets/CofD/WtF2e.png"/>
+        <roll v-bind:data="data"></roll>
       </header>
 
       <fieldset class="personal-info">
@@ -512,6 +513,7 @@
   import Health from "./CofD/Health";
   import Merits from "./CofD/Merits";
   import Notes from "./CofD/Notes";
+  import Roll from "./CofD/Roll";
   import Skills from "./CofD/Skills";
   import TOC from "./TOC";
 
@@ -534,6 +536,7 @@
     Health,
     Merits,
     Notes,
+    Roll,
     Skills,
     TOC
   }

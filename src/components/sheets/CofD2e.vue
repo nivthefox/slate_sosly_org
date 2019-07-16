@@ -25,6 +25,7 @@
     <article id="page-1" class="page">
       <header>
         <img src="@/assets/CofD/CofD2e.png"/>
+        <roll v-bind:data="data"></roll>
       </header>
 
       <fieldset class="personal-info">
@@ -140,11 +141,12 @@
   import Merits from "./CofD/Merits";
   import Notes from "./CofD/Notes";
   import Skills from "./CofD/Skills";
+  import Roll from "./CofD/Roll";
   import TOC from "./TOC";
 
   export default {
     name: "CofD2e",
-    props: ["data"],
+    props: ["data", "guild"],
     data() {
       return {
         locks: {
@@ -160,6 +162,7 @@
       Merits,
       Notes,
       Skills,
+      Roll,
       TOC
     }
   };
