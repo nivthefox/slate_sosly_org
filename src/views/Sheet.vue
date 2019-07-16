@@ -31,7 +31,10 @@
 import CofD2e from "../components/sheets/CofD2e.vue";
   import WtF2e from "../components/sheets/WtF2e.vue";
 
-window.data = {sheet: {}};
+window.data = {
+  channels: [],
+  sheet: {}
+};
 export default {
   name: "sheet",
   created() {
@@ -58,10 +61,17 @@ export default {
     }
   },
   methods: {
-    fetchData() {
-      this.$http.get(`/api/sheets/${this.$route.params.id}`)
-        .then((res) => window.data.sheet = res.data)
-        .catch(() => this.$router.push({path: "/"}))
+    async fetchData() {
+      try {
+        const sheet = await this.$http.get(`/api/sheets/${this.$route.params.id}`);
+        window.data.sheet = sheet.data;
+
+        const channels = await this.$http.post(`/api/channels`, {guild: window.data.sheet.guild});
+        window.data.channels = channels.data.channels;
+      }
+      catch (e) {
+        this.$router.push({path: "/"})
+      }
     }
   },
   components: {
